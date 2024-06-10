@@ -1,0 +1,20 @@
+
+input FeatureFlagInput {
+      name: String!
+  }
+
+  type FeatureFlagT {
+      name: String!
+      description: String!
+      enabled: Boolean!
+  }
+
+  type DBErrorT {
+    message: String!
+  } 
+
+  union FeatureFlagResponse = FeatureFlagT | DBErrorT
+
+  type Query {
+      getFeatureFlagByName(args: FeatureFlagInput): FeatureFlagResponse
+  }
